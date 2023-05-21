@@ -257,6 +257,8 @@
         }
       };
 
+      resultBox.style.display = "block";
+
       var favTasteRecommendation = recommendations[favTaste]["favTaste"];
       var dislikeTasteRecommendation = recommendations[dislikeTaste]["dislikeTaste"];
 
@@ -282,11 +284,13 @@
       for (var i = 0; i < dislikeTasteRecommendation["hashtags"].length; i++) {
         dislikeTasteHashtagsHTML += "<span>" + dislikeTasteRecommendation["hashtags"][i] + "</span>";
       }
-      dislikeTasteHashtags.innerHTML = "핵심키워드: " + dislikeTasteHashtagsHTML;
+      dislikeTasteHashtags.innerHTML = "해시태그: " + dislikeTasteHashtagsHTML;
 
-      favTasteResult.style.display = "block";
-      dislikeTasteResult.style.display = "block";
-      resultBox.style.display = "block";
+      resultBox.innerHTML += '<div style="margin: 10px;">' +
+                            '<br><br><br>' +
+                            '——————————————————<br>' +
+                            'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
+
     }
   </script>
 </body>
