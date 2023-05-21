@@ -257,6 +257,8 @@
         }
       };
 
+      resultBox.style.display = "block";
+
       var favTasteRecommendation = recommendations[favTaste]["favTaste"];
       var dislikeTasteRecommendation = recommendations[dislikeTaste]["dislikeTaste"];
 
@@ -284,9 +286,14 @@
       }
       dislikeTasteHashtags.innerHTML = "해시태그: " + dislikeTasteHashtagsHTML;
 
-      favTasteResult.style.display = "block";
-      dislikeTasteResult.style.display = "block";
-      resultBox.style.display = "block";
+      var copyrightText = '<div style="margin: 10px;">' +
+                          '<br><br><br>' +
+                          '-------------------------------------<br>' +
+                          'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
+
+      resultBox.innerHTML += '<div style="margin: 10px;"><br><br>-------------------------------------<br>' +
+                             'This program, photographs, and works are the property of Octo. Unauthorized use will result in legal punishment.<br></div>';
+
     }
   </script>
 </body>
