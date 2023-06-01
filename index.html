@@ -136,16 +136,16 @@
     </form>
   </div>
 
-  <script>
-    function showResults() {
-      var quizForm = document.getElementById("quizForm");
-      var resultBox = document.getElementById("resultBox");
-      var resultContent = document.getElementById("resultContent");
-      var resultHashtags = document.getElementById("resultHashtags");
-      var favTaste = document.querySelector('input[name="favTaste"]:checked').value;
-      var dislikeTaste = document.querySelector('input[name="dislikeTaste"]:checked').value;
+    <script>
+      function showResults() {
+        var quizForm = document.getElementById("quizForm");
+        var resultBox = document.getElementById("resultBox");
+        var resultContent = document.getElementById("resultContent");
+        var resultHashtags = document.getElementById("resultHashtags");
+        var favTaste = document.querySelector('input[name="favTaste"]:checked').value;
+        var dislikeTaste = document.querySelector('input[name="dislikeTaste"]:checked').value;
 
-      var recommendations = {
+        var recommendations = {
         "신맛": {
           "favTaste": {
             "content": [
@@ -238,23 +238,25 @@
         }
       };
 
-      var resultContentHTML = "";
-      var resultHashtagsHTML = "";
 
-      if (favTaste === "단맛") {
-        resultContentHTML = recommendations[favTaste]["favTaste"]["content"].join("<br>");
-        resultHashtagsHTML = recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
-      } else {
-        resultContentHTML = recommendations[dislikeTaste]["dislikeTaste"]["content"].join("<br>") + "<br><br>";
-        resultContentHTML += recommendations[favTaste]["favTaste"]["content"].join("<br>");
-        resultHashtagsHTML = recommendations[dislikeTaste]["dislikeTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
-        resultHashtagsHTML += " " + recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        var resultContentHTML = "";
+        var resultHashtagsHTML = "";
+
+        if (favTaste === "단맛") {
+          resultContentHTML = recommendations[favTaste]["favTaste"]["content"].join("<br>");
+          resultHashtagsHTML = recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        } else {
+          resultContentHTML = recommendations[dislikeTaste]["dislikeTaste"]["content"].join("<br>") + "<br><br>";
+          resultContentHTML += recommendations[favTaste]["favTaste"]["content"].join("<br>");
+          resultHashtagsHTML = recommendations[dislikeTaste]["dislikeTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+          resultHashtagsHTML += " " + recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        }
+
+        resultContent.innerHTML = resultContentHTML;
+        resultHashtags.innerHTML = "해시태그: " + resultHashtagsHTML;
+        resultBox.style.display = "block";
       }
-
-      resultContent.innerHTML = resultContentHTML;
-      resultHashtags.innerHTML = "해시태그: " + resultHashtagsHTML;
-      resultBox.style.display = "block";
-    }
-  </script>
+    </script>
+  </div>
 </body>
 </html>
