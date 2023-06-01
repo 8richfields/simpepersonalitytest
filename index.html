@@ -117,22 +117,23 @@
         <input type="radio" id="dislikeTaste5" name="dislikeTaste" value="짠맛">
         <label for="dislikeTaste5">짠맛</label>
       </div>
+php
+Copy code
+  <div class="spacer"></div>
 
-      <div class="spacer"></div>
+  <button type="button" id="submitButton" onclick="showResults()">성격과 취향 분석하기</button>
 
-      <button type="button" id="submitButton" onclick="showResults()">성격과 취향 분석하기</button>
-
-      <div id="resultBox" class="result-box" style="display: none; background-color: #FFFFCC;">
-        <div class="content" id="resultContent" style="display: none;">
-          <hr>
-          <p class="bold" style="font-size: 23px;">나를 대표하는 성격과 취향</p>
-          <div id="resultContent"></div>
-          <div class="hashtags" id="resultHashtags"></div>
-        </div>
-      </div>
-    </form>
+  <div id="resultBox" class="result-box" style="display: none; background-color: #FFFFCC;">
+    <hr>
+    <p class="bold" style="font-size: 23px;">나를 대표하는 성격과 취향</p>
+    <div id="resultContent"></div>
+    <div class="hashtags" id="resultHashtags"></div>
+    <div id="copyright">
+      <p>본 프로그램, 사진, 저작물은 저작권(C-2023-022846)으로 등록되어 있습니다. 허락없이 사용시 저작권법에 따라 법적 처벌됩니다.</p>
+    </div>
   </div>
-
+</form>
+  </div>
   <script>
     function showResults() {
       var quizForm = document.getElementById("quizForm");
@@ -265,3 +266,4 @@
   </script>
 </body>
 </html>
+본 프로그램, 사진, 저작물은 저작권(C-2023-022846)으로 등록되어 있습니다. 허락없이 사용시 저작권법에 따라 법적 처벌됩니다.
