@@ -236,34 +236,36 @@ Copy code
         }
       }
 
-      var dislikeTasteRecommendation = recommendations[dislikeTaste]["dislikeTaste"];
-      var dislikeTasteContentHTML = "";
-      for (var i = 0; i < dislikeTasteRecommendation["content"].length; i++) {
-        dislikeTasteContentHTML += "<p>" + dislikeTasteRecommendation["content"][i] + "</p>";
-      }
-      var dislikeTasteHashtagsHTML = "";
-      for (var i = 0; i < dislikeTasteRecommendation["hashtags"].length; i++) {
-        dislikeTasteHashtagsHTML += "<span>" + dislikeTasteRecommendation["hashtags"][i] + "</span>";
-      }
-
-      var resultContentHTML = "";
-      var resultHashtagsHTML = "";
-
-      if (favTaste === "단맛") {
+    if (favTaste === "단맛") {
         var favTasteRecommendation = recommendations[favTaste]["favTaste"];
+        var favTasteContentHTML = "";
         for (var i = 0; i < favTasteRecommendation["content"].length; i++) {
-          resultContentHTML += "<p>" + favTasteRecommendation["content"][i] + "</p>";
+          favTasteContentHTML += "<p>" + favTasteRecommendation["content"][i] + "</p>";
         }
+        var favTasteHashtagsHTML = "";
         for (var i = 0; i < favTasteRecommendation["hashtags"].length; i++) {
-          resultHashtagsHTML += "<span>" + favTasteRecommendation["hashtags"][i] + "</span>";
+          favTasteHashtagsHTML += "<span>" + favTasteRecommendation["hashtags"][i] + "</span>";
         }
+        // 가장 좋아하는 맛의 결과 내용과 해시태그를 추가합니다.
+        resultContent.innerHTML = favTasteContentHTML;
+        resultHashtags.innerHTML = "해시태그: " + favTasteHashtagsHTML;
+      } else {
+        // 가장 싫어하는 맛의 결과를 출력합니다.
+        var dislikeTasteRecommendation = recommendations[dislikeTaste]["dislikeTaste"];
+        var dislikeTasteContentHTML = "";
+        for (var i = 0; i < dislikeTasteRecommendation["content"].length; i++) {
+          dislikeTasteContentHTML += "<p>" + dislikeTasteRecommendation["content"][i] + "</p>";
+        }
+        var dislikeTasteHashtagsHTML = "";
+        for (var i = 0; i < dislikeTasteRecommendation["hashtags"].length; i++) {
+          dislikeTasteHashtagsHTML += "<span>" + dislikeTasteRecommendation["hashtags"][i] + "</span>";
+        }
+        // 가장 싫어하는 맛의 결과 내용과 해시태그를 추가합니다.
+        resultContent.innerHTML = dislikeTasteContentHTML;
+        resultHashtags.innerHTML = "해시태그: " + dislikeTasteHashtagsHTML;
       }
-
-      resultContent.innerHTML = resultContentHTML + dislikeTasteContentHTML;
-      resultHashtags.innerHTML = "해시태그: " + resultHashtagsHTML + dislikeTasteHashtagsHTML;
-      resultBox.style.display = "block";
     }
   </script>
 </body>
 </html>
-본 프로그램, 사진, 저작물은 저작권(C-2023-022846)으로 등록되어 있습니다. 허락없이 사용시 저작권법에 따라 법적 처벌됩니다.
+
