@@ -238,20 +238,17 @@
         }
       };
 
-
       var resultContentHTML = "";
       var resultHashtagsHTML = "";
 
       if (favTaste === "단맛") {
-        resultContentHTML = recommendations[favTaste]["content"].join("<br>");
-        resultHashtagsHTML = recommendations[favTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        resultContentHTML = recommendations[favTaste]["favTaste"]["content"].join("<br>");
+        resultHashtagsHTML = recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
       } else {
-        resultContentHTML = recommendations[dislikeTaste]["content"].join("<br>");
-        resultContentHTML += "<br><br>";
-        resultContentHTML += recommendations[favTaste]["content"].join("<br>");
-
-        resultHashtagsHTML = recommendations[dislikeTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
-        resultHashtagsHTML += " " + recommendations[favTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        resultContentHTML = recommendations[dislikeTaste]["dislikeTaste"]["content"].join("<br>") + "<br><br>";
+        resultContentHTML += recommendations[favTaste]["favTaste"]["content"].join("<br>");
+        resultHashtagsHTML = recommendations[dislikeTaste]["dislikeTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        resultHashtagsHTML += " " + recommendations[favTaste]["favTaste"]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
       }
 
       resultContent.innerHTML = resultContentHTML;
