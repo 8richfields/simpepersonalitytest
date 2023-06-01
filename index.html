@@ -117,23 +117,25 @@
         <input type="radio" id="dislikeTaste5" name="dislikeTaste" value="짠맛">
         <label for="dislikeTaste5">짠맛</label>
       </div>
-php
-Copy code
-  <div class="spacer"></div>
 
-  <button type="button" id="submitButton" onclick="showResults()">성격과 취향 분석하기</button>
+      <div class="spacer"></div>
 
-  <div id="resultBox" class="result-box" style="display: none; background-color: #FFFFCC;">
-    <hr>
-    <p class="bold" style="font-size: 23px;">나를 대표하는 성격과 취향</p>
-    <div id="resultContent"></div>
-    <div class="hashtags" id="resultHashtags"></div>
-    <div id="copyright">
-      <p>본 프로그램, 사진, 저작물은 저작권(C-2023-022846)으로 등록되어 있습니다. 허락없이 사용시 저작권법에 따라 법적 처벌됩니다.</p>
-    </div>
+      <button type="button" id="submitButton" onclick="showResults()">성격과 취향 분석하기</button>
+
+      <div id="resultBox" class="result-box" style="display: none; background-color: #FFFFCC;">
+        <div class="content" id="resultContent" style="display: none;">
+          <hr>
+          <p class="bold" style="font-size: 23px;">나를 대표하는 성격과 취향</p>
+          <div id="resultContent"></div>
+          <div class="hashtags" id="resultHashtags"></div>
+          <div id="copyright">
+            <p>본 프로그램, 사진, 저작물은 저작권으로 등록되어 있습니다. 허락없이 사용시 저작권법에 따라 법적 처벌됩니다.</p>
+          </div>          
+        </div>
+      </div>
+    </form>
   </div>
-</form>
-  </div>
+
   <script>
     function showResults() {
       var quizForm = document.getElementById("quizForm");
@@ -234,38 +236,28 @@ Copy code
             "hashtags": ["#인식형", "#유연성", "#적응성", "#조용한환경", "#깊은사색", "#창의적사고"]
           }
         }
+      };
+
+
+      var resultContentHTML = "";
+      var resultHashtagsHTML = "";
+
+      if (favTaste === "단맛") {
+        resultContentHTML = recommendations[favTaste]["content"].join("<br>");
+        resultHashtagsHTML = recommendations[favTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+      } else {
+        resultContentHTML = recommendations[dislikeTaste]["content"].join("<br>");
+        resultContentHTML += "<br><br>";
+        resultContentHTML += recommendations[favTaste]["content"].join("<br>");
+
+        resultHashtagsHTML = recommendations[dislikeTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
+        resultHashtagsHTML += " " + recommendations[favTaste]["hashtags"].map(tag => `<span>${tag}</span>`).join(" ");
       }
 
-    if (favTaste === "단맛") {
-        var favTasteRecommendation = recommendations[favTaste]["favTaste"];
-        var favTasteContentHTML = "";
-        for (var i = 0; i < favTasteRecommendation["content"].length; i++) {
-          favTasteContentHTML += "<p>" + favTasteRecommendation["content"][i] + "</p>";
-        }
-        var favTasteHashtagsHTML = "";
-        for (var i = 0; i < favTasteRecommendation["hashtags"].length; i++) {
-          favTasteHashtagsHTML += "<span>" + favTasteRecommendation["hashtags"][i] + "</span>";
-        }
-        // 가장 좋아하는 맛의 결과 내용과 해시태그를 추가합니다.
-        resultContent.innerHTML = favTasteContentHTML;
-        resultHashtags.innerHTML = "해시태그: " + favTasteHashtagsHTML;
-      } else {
-        // 가장 싫어하는 맛의 결과를 출력합니다.
-        var dislikeTasteRecommendation = recommendations[dislikeTaste]["dislikeTaste"];
-        var dislikeTasteContentHTML = "";
-        for (var i = 0; i < dislikeTasteRecommendation["content"].length; i++) {
-          dislikeTasteContentHTML += "<p>" + dislikeTasteRecommendation["content"][i] + "</p>";
-        }
-        var dislikeTasteHashtagsHTML = "";
-        for (var i = 0; i < dislikeTasteRecommendation["hashtags"].length; i++) {
-          dislikeTasteHashtagsHTML += "<span>" + dislikeTasteRecommendation["hashtags"][i] + "</span>";
-        }
-        // 가장 싫어하는 맛의 결과 내용과 해시태그를 추가합니다.
-        resultContent.innerHTML = dislikeTasteContentHTML;
-        resultHashtags.innerHTML = "해시태그: " + dislikeTasteHashtagsHTML;
-      }
+      resultContent.innerHTML = resultContentHTML;
+      resultHashtags.innerHTML = "해시태그: " + resultHashtagsHTML;
+      resultBox.style.display = "block";
     }
   </script>
 </body>
 </html>
-
