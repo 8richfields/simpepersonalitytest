@@ -135,7 +135,6 @@
         </div>        
         <div class="content" id="favTasteResult" style="display: none;">
           <hr>
-          <p class="bold" style="font-size: 23px;">부족한 오행과 극복하는 방법</p>
           <div id="favTasteContent"></div>
           <div class="hashtags" id="favTasteHashtags"></div>
         </div>
@@ -170,9 +169,7 @@ var recommendations = {
     },
     "dislikeTaste": {
       "content": [
-        "[대표적인 성향]",
         "당신은 목(木)의 성향을 가진 사람으로 진취적이고 합리적인 성향을 가지며, 미적 감각이 뛰어나고 혼자 하는 일에 적성이 맞습니다. 하지만 귀가 얇아서 주변에 휘둘릴 수 있으며, 도전적인 것보다는 안정을 추구하는 경향이 클 수 있습니다.",
-        "[MBTI 성향]",
         "당신의 MBTI 성향은 대체로 내향적(I)과 감정형(F)에 가깝습니다. 이러한 성격은 창조적인 생각과 디테일에 대한 깊은 이해를 가능하게 합니다."
       ],
       "hashtags": ["#내향적", "#감정형", "#성장", "#발전", "#창조성"]
@@ -201,13 +198,11 @@ var recommendations = {
   "단맛": {
     "favTaste": {
       "content": [
-        "[대표적인 성향]",
         "당신은 토(土)의 성향이 강한 사람입니다. 포용력이 높고 일 처리 능력이 뛰어나며 주변 사람들과 조율하는 데 능숙하여 신뢰감을 얻는 스타일입니다. 자신이 주관이 강하고 다른 사람을 도우려는 성향도 남들보다 강합니다. 돈보다 명예와 일에 더 집중하면 큰 재물을 얻는 경우가 많습니다.",
-        "[MBTI 성향]",
         "당신의 MBTI 성향은 내향적(I), 감각적(S), 감정형(F)의 유형입니다. 다른 사람에게 신뢰감이 있고 배려심과 돌봄이 있는 성향입니다. 또한 일을 추진함에 있어 직관적으로 움직이는 성향입니다."
       ],
       "hashtags": ["#황토색", "#흙", "#감각적", "#감정형", "#신뢰할수있는", "#현실적"]
-    },
+    },    
     "dislikeTaste": {
       "content": [
         "당신은 오행(五行)에서 토(土)가 부족한 사람입니다. 소화기 관련 질환에 취약하고 정서불안과 노이로제 등에 시달릴 수 있습니다. 토(土)는 중심성과 안정감, 균형을 상징합니다. 따라서 이를 보충하기 위해서 토(土)의 기운을 높일 수 있는 활동과 식사가 필요합니다. 소화기 관련 질환을 예방하고 관리하는 것이 중요합니다.",
@@ -229,9 +224,7 @@ var recommendations = {
     },
     "dislikeTaste": {
       "content": [
-        "대표적인 성향",
         "당신은 금(金)의 성향이 강한 사람입니다. 금(金) 강한 사람은 고집이 세고 투쟁적이며 혁명적인 성향을 가질 수 있으며 의리가 강한 스타일입니다. 금의 기운이 3개 이상일 경우 성품이 강직하고 카리스마가 있어 남들에게는 칼날같이 날카롭게 느껴질 수도 있습니다.",
-        "MBTI 성향",
         "금(金)의 성향은 주로 MBTI에서 내향적(I), 사고적(T), 판단형(J)의 유형과 관련이 있습니다. 조용한 듯 하면서 부르러운 이미지이기 때문에 모든 판단을 내릴 때 깊이 심사숙고해서 판단하는 스타일입니다. 이런 성격으로 인해 관리자의 성향에 가깝습니다."
       ],
       "hashtags": ["#매운맛", "#판단형", "#사고형", "#명확함", "#결단력", "#체계적일상", "#목표지향적업무"]
@@ -249,9 +242,7 @@ var recommendations = {
     },
     "dislikeTaste": {
       "content": [
-        "대표적인 성향",
         "당신은 수(水)의 성향을 가진 사람입니다. 당신은 물의 흐름처럼 융통성 있고 매력적인 성격을 가진 사람입니다. 움직임이 활발하고 항상 활동적이지만 가끔 유흥을 즐기며 즐거움을 찾는 것도 좋아하는 편입니다.",
-        "MBTI 성향",
         "수(水)의 성향은 주로 MBTI에서 내향적(I), 감정형(F), 인식형(P)의 유형과 관련이 있습니다. 조용한 듯 하지만 지혜롭고 넓은 시야를 가진 성향입니다. 수(水)는 고요한 물을 상징하며 이는 신비롭고 풍요로운 내면세계를 가진 성격을 보여줍니다."
       ],
       "hashtags": ["#인식형", "#유연성", "#적응성", "#조용한환경", "#깊은사색", "#창의적사고"]
@@ -274,27 +265,6 @@ var recommendations = {
         favTasteHashtagsHTML += "<span>" + favTasteRecommendation["hashtags"][i] + "</span>";
       }
       favTasteHashtags.innerHTML = "해시태그: " + favTasteHashtagsHTML;
-
-      var dislikeTasteResultHTML = "";
-      if (dislikeTaste === "단맛") {
-        dislikeTasteResultHTML = dislikeTasteHashtags.innerHTML;
-      } else {
-        var dislikeTasteContentHTML = "";
-        for (var i = 0; i < dislikeTasteRecommendation["content"].length; i++) {
-          dislikeTasteContentHTML += "<p>" + dislikeTasteRecommendation["content"][i] + "</p>";
-        }
-        dislikeTasteContent.innerHTML = dislikeTasteContentHTML;
-
-        var dislikeTasteHashtagsHTML = "";
-        for (var i = 0; i < dislikeTasteRecommendation["hashtags"].length; i++) {
-          dislikeTasteHashtagsHTML += "<span>" + dislikeTasteRecommendation["hashtags"][i] + "</span>";
-        }
-        dislikeTasteHashtags.innerHTML = "해시태그: " + dislikeTasteHashtagsHTML;
-
-        dislikeTasteResultHTML = dislikeTasteContent.innerHTML + dislikeTasteHashtags.innerHTML;
-      }
-      dislikeTasteResult.innerHTML = dislikeTasteResultHTML;
-
       favTasteResult.style.display = "block";
       dislikeTasteResult.style.display = "block";
       resultBox.style.display = "block";
